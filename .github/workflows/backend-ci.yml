@@ -29,7 +29,7 @@ jobs:
       run: mkdir -p src/tests/Products.Application.Tests/TestResults
 
     - name: Run Application Tests
-      run: dotnet test src/tests/Products.Application.Tests/Products.Application.Tests.csproj --no-build --verbosity normal --logger "trx;LogFileName=src/tests/Products.Application.Tests/TestResults/test-results.trx"
+      run: dotnet test src/tests/Products.Application.Tests/Products.Application.Tests.csproj --verbosity normal --logger "trx;LogFileName=src/tests/Products.Application.Tests/TestResults/test-results.trx"
 
     - name: Upload test results
       if: always()
