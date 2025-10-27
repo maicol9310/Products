@@ -1,0 +1,49 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore Backend Solutions
+      run: |
+        dotnet restore src/Products.Api/Products.Api.sln
+        dotnet restore src/Products.Application/Products.Application.sln
+        dotnet restore src/Products.Domain/Products.Domain.sln
+        dotnet restore src/Products.Infrastructure/Products.Infrastructure.sln
+        dotnet restore src/Products.SharedKernel/Products.SharedKernel.sln
+
+    - name: Build Backend Solutions
+      run: |
+        dotnet build src/Products.Api/Products.Api.sln --no-restore --configuration Release
+        dotnet build src/Products.Application/Products.Application.sln --no-restore --configuration Release
+        dotnet build src/Products.Domain/Products.Domain.sln --no-restore --configuration Release
+        dotnet build src/Products.Infrastructure/Products.Infrastructure.sln --no-restore --configuration Release
+        dotnet build src/Products.SharedKernel/Products.SharedKernel.sln --no-restore --configuration Release
+
+    - name: Prepare TestResults folder
+      run: mkdir -p src/tests/Products.Application.Tests/TestResults
+
+    - name: Run Application Tests
+      run: dotnet test src/tests/Products.Application.Tests/Products.Application.Tests/Products.Application.Tests.csproj --verbosity normal --logger "trx;LogFileName=src/tests/Products.Application.Tests/TestResults/test-results.trx"
+
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: src/tests/Products.Application.Tests/TestResults/test-results.trx

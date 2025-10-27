@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "7cecaafb-7c8f-480d-bbc0-20c33c15d12f",
+		"name": "Products API",
+		"description": "Colección Postman para probar los endpoints de Hotels.API con autenticación JWT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13173329",
+		"_collection_link": "https://blue-space-932435.postman.co/workspace/test~e2dea4d1-33af-40f8-94d9-14f1c9df4d26/collection/13173329-7cecaafb-7c8f-480d-bbc0-20c33c15d12f?action=share&source=collection_link&creator=13173329"
+	},
+	"item": [
+		{
+			"name": "Login (Obtener Token JWT)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"role\": \"Admin\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:7132/login?username=Admin&role=Admin",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7132",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Admin"
+						},
+						{
+							"key": "role",
+							"value": "Admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc2MTU2NzIzMSwiaXNzIjoiUHJvZHVjdHNBcGkiLCJhdWQiOiJQcm9kdWN0c0NsaWVudCJ9.xfluvRCMw6K5bR-C_XCH_IBt2PMFhfmMxMV2w8OmDBs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7132/api/Products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7132",
+					"path": [
+						"api",
+						"Products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc2MTU2NzIzMSwiaXNzIjoiUHJvZHVjdHNBcGkiLCJhdWQiOiJQcm9kdWN0c0NsaWVudCJ9.xfluvRCMw6K5bR-C_XCH_IBt2PMFhfmMxMV2w8OmDBs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7132/api/Products/{{id}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7132",
+					"path": [
+						"api",
+						"Products",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc2MTU2NzIzMSwiaXNzIjoiUHJvZHVjdHNBcGkiLCJhdWQiOiJQcm9kdWN0c0NsaWVudCJ9.xfluvRCMw6K5bR-C_XCH_IBt2PMFhfmMxMV2w8OmDBs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"stock\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7132/api/Products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7132",
+					"path": [
+						"api",
+						"Products"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt_token",
+			"value": ""
+		}
+	]
+}
