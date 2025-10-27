@@ -75,6 +75,21 @@ dotnet run --project Products.Api/Products.Api.csproj
 ![Backend](docs/GitHubActions.jpeg)
 
 
+## Preguntas y Respuestas
+
+1. ¿Qué ventajas ofrece usar una arquitectura basada en microservicios frente a una monolítica?
+Las ventajas principales son la escabilidad, el mantenimiento y la flexibilidad, los componentes no se afecta entre si los cual es util a largo plazo.
+
+2. ¿Cómo aplicarías CI/CD en este proyecto para automatizar el despliegue?
+Ya aplique CI/CD a este proyecto, he configurado un Workflow con un archivo backend-ci.yml para las integraciones, depliegues y prubas automatizadas.
+
+3. ¿Qué medidas implementarías para asegurar la mantenibilidad y rendimiento de la API a largo plazo?7
+Un arquitectura limpia con DDD y CQRS desacoplando el código sin romper DDD pero con alta cohesión entre los sistemas, a su vez implementado SOLID.
+
+4. (Opcional) ¿Has trabajado con .NET MAUI? Explica brevemente cómo podrías integrar una app móvil con esta API.
+Si he trabajo con .NET MAUI y con Flutter, en ambos casos integre desarrollos multiplataforma con apis .Net o Node.JS, se crear un provider por ejemplo para el consumo de los diferentes endpoint o servicios, funciona de la misma forma que cualquier desarrollo con integraciones externas.
+
+
 ## 👥 Autor
 
 **Jan Michael Sánchez**
