@@ -1,12 +1,8 @@
 ﻿using Moq;
-using NUnit.Framework;
 using Products.Application.Commands;
 using Products.Application.Handlers;
 using Products.Application.Abstractions.Interfaces;
 using Products.Domain.Entities;
-using Products.SharedKernel;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Products.Application.Tests.Handlers
 {
